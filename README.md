@@ -1,7 +1,42 @@
-# Price Formatter
+# Форматирование цены
 
-[TODO. There will be project description]
+Модуль форматирует цены в единый формат, например на входе `3245.000000` форматирует в `3 245`. 
 
-# Project Goals
+Модуль имеет два интерфейса:
+* Программный - можно подключать отдельный модуль
+* Command line interface - можно использовать из консоли
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+
+# Как использовать
+
+Пример подключения модуля
+
+```bash
+from format_price import format_price
+
+price = format_price(2000)
+# в переменной price будет значение `2 000`
+
+```
+
+
+# Как запустить
+
+Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
+
+Запуск на Linux:
+
+```bash
+
+$ python3 tests.py # тестирование модуля
+$ python3 format_price.py 27840.23140
+# пример ответа
+27 840.2314
+
+```
+
+Запуск на Windows происходит аналогично.
+
+# Цели проекта
+
+Код создан в учебных целях. В рамках учебного курса по веб-разработке ― [DEVMAN.org](https://devman.org)
