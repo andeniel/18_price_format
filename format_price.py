@@ -11,7 +11,7 @@ def format_price(price):
     digit_str = price_str.split('.')
     numbers_str = decimal_str = ""
 
-    if len(digit_str) > 0:
+    if digit_str:
         numbers_str = re.sub(
             r"[, ]",
             "",
