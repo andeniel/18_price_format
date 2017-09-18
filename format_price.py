@@ -5,6 +5,13 @@ import re
 def format_price(price):
     price_str = str(price).strip()
     clear_str = re.sub(r"[., ]", "", price_str)
+
+    symbol_first = ""
+    if clear_str[0] in ["+", "-"]:
+        symbol_first = clear_str[0]
+        clear_str = re.sub(r"[+-]", "", clear_str)
+        price_str = re.sub(r"[+-]", "", price_str)
+
     if not clear_str.isdigit():
         return None
 
@@ -34,7 +41,8 @@ def format_price(price):
         ])
     decimal_str = decimal_str.rstrip("0")
 
-    return "{}{}".format(
+    return "{}{}{}".format(
+                symbol_first,
                 space_price[::-1],
                 '.'+decimal_str if len(decimal_str) > 0 else ""
             )
