@@ -9,23 +9,35 @@ def format_price(price):
         return None
 
     digit_str = price_str.split('.')
+    numbers_str = decimal_str = ""
 
-    numbers_str = re.sub(
-        r"[, ]", "",
-        digit_str[0]) if len(digit_str) > 0 else ""
-    decimal_str = re.sub(
-        r"[., ]", "",
-        digit_str[1]) if len(digit_str) > 1 else ""
+    if len(digit_str) > 0:
+        numbers_str = re.sub(
+            r"[, ]",
+            "",
+            digit_str[0]
+        )
+
+    if len(digit_str) > 1:
+        decimal_str = re.sub(
+            r"[, ]",
+            "",
+            digit_str[1]
+        )
 
     reverse_price = numbers_str[::-1]
     space_price = ' '.join(
-        [reverse_price[key_index:key_index+3] for key_index in range(
-            0, len(reverse_price), 3)])
+        [
+            reverse_price[key_index:key_index+3] for key_index in range(
+                    0, len(reverse_price), 3
+                )
+        ])
     decimal_str = decimal_str.rstrip("0")
 
     return "{}{}".format(
-            space_price[::-1],
-            '.'+decimal_str if len(decimal_str) > 0 else "")
+                space_price[::-1],
+                '.'+decimal_str if len(decimal_str) > 0 else ""
+            )
 
 if __name__ == '__main__':
     aparser = argparse.ArgumentParser()
@@ -39,4 +51,4 @@ if __name__ == '__main__':
     if price:
         print(price)
     else:
-        print("Введенное число не допустимое")
+        print("Введено недопустимое число")
